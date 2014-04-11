@@ -1,13 +1,10 @@
-<div class="container">
-	<h1>All Posts</h1>
-	<% @posts.each do |post| %>
-	  <div class="media">
-	  	<div class="media-body">
-	  		<h4 class="media-head">
-	  			<p><%= link_to post.title, post %></p>
-	  		</h4>
-	  	</div>
-	  </div>
-	<% end %>
-</div>
-	
+<h1>All Posts</h1>
+<% @posts.each do |post| %>
+  <div class="media">
+  	<div class="media-body">
+  		<h4 class="media-head">
+  			<p><%= link_to post.title, post %></p>
+  		</h4>
+  	</div>
+  </div>
+<% end %>

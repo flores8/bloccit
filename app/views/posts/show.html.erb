@@ -1,5 +1,5 @@
-<div class="container">
-	<h1><%= @post.title %></h1>
-	<p><%= @post.body %></p>
-</div>
+<h1><%= @post.title %></h1>
+<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-primary' %>
+<p><%= @post.body %></p>
+
 	
