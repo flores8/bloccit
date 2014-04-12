@@ -1,7 +1,7 @@
 <h1><%= @post.title %></h1>
 
 <% if policy(@post).edit? %>
-	<%= link_to "Edit Post", edit_post_path(@post), class: 'btn btn-success' %>
+	<%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
 <% end %>
 
 <p><%= @post.body %></p>

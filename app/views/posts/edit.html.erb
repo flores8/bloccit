@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 <div class="row">
 	<div class="col-md-12">
-  	<%= form_for @post do |f| %>
+  	<%= form_for [@topic, @post] do |f| %>
 			<div class="form-group">
 				<%= f.label :title %>
 			  <%= f.text_field :title, class: "form-control", placeholder: "Enter post title" %>
