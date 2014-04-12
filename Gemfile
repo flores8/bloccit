@@ -21,3 +21,4 @@ end
 gem 'faker'
 gem 'devise'
 gem 'figaro'
+gem 'pundit'
