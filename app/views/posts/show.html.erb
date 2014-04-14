@@ -1,9 +1,9 @@
-<h1><%= @post.title %></h1>
+<h1><%= markdown @post.title %></h1>
 
 <% if policy(@post).edit? %>
 	<%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
 <% end %>
 
-<p><%= @post.body %></p>
+<p><%= markdown @post.body %></p>
 
 	
