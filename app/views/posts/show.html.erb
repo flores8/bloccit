@@ -8,6 +8,12 @@
 		</small>
 		<p><%= markdown @post.body %></p>
 		<p><%= image_tag(@post.image_url) if @post.image? %></p>
+
+		<hr />
+
+		<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+
+		<%= render partial: 'comments', locals: { post: @post, comments: @comments } %>
 	</div>
 
 	<div class="col-md-4">

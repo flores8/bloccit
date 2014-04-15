@@ -1,6 +1,12 @@
 require 'faker'
 topics = []
 5.times do
+	topics << Topic.create(
+		name: Faker::Lorem.sentence,
+		description: Faker::Lorem.paragraph
+		)
+end
+5.times do
 	password = Faker::Lorem.characters(10)
 	user = User.new(
 		name: Faker::Name.name,
@@ -9,24 +15,27 @@ topics = []
 		password_confirmation: password)
 	user.skip_confirmation!
 	user.save
+	
+	10.times do 
+		topic = topics.first
+		post = Post.create(
+			user: user,
+			topic: topic, 
+			title: Faker::Lorem.sentence,
+			body: Faker::Lorem.paragraph)
+		post.update_attribute(:created_at, Time.now - rand(600..31536000))
+		topics.rotate!
+	end
+end
 
-	5.times do
-	topics << Topic.create(
-		name: Faker::Lorem.sentence,
-		description: Faker::Lorem.paragraph
-		)
-		12.times do 
-			topic = topics.first
-			post = Post.create(
-				user: user, 
-				title: Faker::Lorem.sentence,
-				body: Faker::Lorem.paragraph)
-			post.update_attribute(:created_at, Time.now - rand(600..31536000))
-			topics.rotate!
-			5.times do
-				comment = Comment.create(body: Faker::Lorem.paragraph)
-			end
-		end
+post_count = Post.count
+User.all.each do |user|
+	10.times do
+		post = Post.find(rand(1..post_count))
+		comment = user.comments.create(
+			body: Faker::Lorem.paragraph,
+			post: post)
+		comment.update_attribute(:created_at, Time.now - rand(600..31536000))
 	end
 end
 

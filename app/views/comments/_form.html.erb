@@ -1,0 +1,23 @@
+<%= form_for [topic, post, comment] do |f| %>
+	<!-- Error Messages --> 
+	<% if comment.errors.any? %>
+		<div class="alert alert-danger">
+			<h4>There are <%= pluralize(comment.errors.count, "error") %> errors.</h4>
+			<ul>
+				<% comment.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<!-- Add a Comment Form --> 
+	<%= form_group_tag(comment.errors[:body]) do %>
+	  <%= f.text_area :body, class: "form-control", placeholder: "Enter your comment" %>
+  <% end %>
+	
+	<div class="form-group">
+		<%= f.submit "Save Comment", class: "btn btn-primary" %>
+	</div>
+
+<% end %>

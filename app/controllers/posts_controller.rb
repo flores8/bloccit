@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user! 
 
   def show
     @topic = Topic.find(params[:topic_id])
   	@post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = current_user.comments.build
   end
 
   def new
