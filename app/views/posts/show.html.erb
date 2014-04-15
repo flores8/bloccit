@@ -20,6 +20,10 @@
 		<% if policy(@post).edit? %>
 			<%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
 		<% end %>
+
+		<% if policy(@post).destroy? %>
+			<%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete this post?' %>
+		<% end %>
 	</div>
 </div>
 
