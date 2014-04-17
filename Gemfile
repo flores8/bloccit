@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-gem 'pg'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 gem 'jquery-rails'
 gem 'turbolinks'

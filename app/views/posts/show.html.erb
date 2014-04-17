@@ -1,4 +1,5 @@
 <div class="container">
+	<%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
 	<h1><%= markdown @post.title %></h1>
 
 	<div class="row">
@@ -9,6 +10,15 @@
 			</small>
 			<p><%= markdown @post.body %></p>
 			<p><%= image_tag(@post.image_url) if @post.image? %></p>
+
+			<!-- Votes --> 
+			<h3>
+				<%= pluralize(@post.points, 'point') %>
+			</h3>
+			<small>
+				<%= pluralize(@post.up_votes, 'up vote') %>, 
+				<%= pluralize(@post.down_votes, 'down vote') %>
+			</small>
 
 			<hr />
 
@@ -25,6 +35,10 @@
 			<% if policy(@post).destroy? %>
 				<%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete this post?' %>
 			<% end %>
+		</div>
+
+		<div>
+
 		</div>
 	</div>
 

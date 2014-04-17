@@ -24,6 +24,8 @@ end
 			title: Faker::Lorem.sentence,
 			body: Faker::Lorem.paragraph)
 		post.update_attribute(:created_at, Time.now - rand(600..31536000))
+
+		post.update_rank
 		topics.rotate!
 	end
 end

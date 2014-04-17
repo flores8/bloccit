@@ -1,0 +1,3 @@
+class VotePolicy < ApplicationPolicy
+	
+end

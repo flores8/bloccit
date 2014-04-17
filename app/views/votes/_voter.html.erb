@@ -1,0 +1,13 @@
+<% if policy(Vote.new).create? %>
+	<div class="voting-wrapper pull-left">
+		<div>
+			<%= link_to " ", topic_post_up_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-up' %>
+		</div>
+		<div>
+			<strong><%= post.points %></strong>
+		</div>
+		<div>
+			<%= link_to " ", topic_post_down_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-down' %>
+		</div>
+	</div>
+<% end %>
