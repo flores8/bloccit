@@ -1,9 +1,167 @@
 @import "bootstrap";
 
-.user-info {
-	margin-top: 9px;
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic);
+
+/* Colors */
+$blue: 					#75A3D1 !default;
+$green: 				#16A79D !default;
+$red: 					#FF606E !default;
+$white: 				#fafafa !default;
+$black: 				#333333 !default;
+$text: 					#58595b !default;
+$lightGray: 		#f0f0f0 !default;
+
+/* Mixins */
+@mixin border-radius ($px) {
+	-webkit-border-radius: $px;
+	-moz-border-radius: $px;
+	border-radius: $px;
 }
 
-.nav {
-	margin-top: 5px;
+@mixin transition ($seconds) {
+	-webkit-transition: $seconds;
+	-moz-transition: $seconds;
+	-o-transition: $seconds;
+	transition: $seconds;
+}
+
+@mixin ghost-button ($color, $font, $seconds-off, $seconds-on) {
+	border: 2px solid $color;
+	@include border-radius(2px);
+	padding: 1em 3em;
+	display: inline-block;
+	margin: 2em 0;
+	font-size: $font;
+	@include transition ($seconds-off);
+	&:hover {
+		text-decoration: none;
+		background-color: $color;
+		color: $white;
+		@include transition ($seconds-on);
+	}
+}
+
+@mixin button ($color, $px, $font, $seconds-off, $seconds-on) {
+	background-color: $color;
+	@include border-radius($px);
+	padding: 1em 3em;
+	display: inline-block;
+	margin: 2em 0;
+	font-size: $font;
+	@include transition ($seconds-off);
+	&:hover {
+		text-decoration: none;
+		background-color: darken($color, 5%);
+		color: $white;
+		@include transition ($seconds-on);
+	}
+}
+
+@mixin image ($image) {
+	background-image: image-url($image);
+	width: 100% !important;
+	background-repeat: no-repeat;
+	background-size: cover !important;
+	background-position: 50% 50%;
+}
+
+/* Site-Wide Modification
+================================================== */
+::-moz-selection { 
+	color: $white;  
+	background: $blue !important; 
+}
+::selection { 
+	color: $white;  
+	background: $blue !important; 
+}
+
+.alert {
+	margin-bottom: 0;
+}
+
+/* Home Page
+================================================== */
+
+/* Home page header */
+div.home-header {
+	@include image ('open-to-learning.jpg');
+	padding: 10em 0;
+	.intro-text {
+		padding: 1em;
+		color: $black;
+		text-align: center;
+	}
+	h1 {
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 3em;
+		padding-bottom: .5em;
+	}
+	h2 {
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 1.5em;
+		padding-bottom: .75em;
+	}
+	a.ghost-button {
+		@include ghost-button($green, 1.5em, .4s, .3s);
+		color: $white;
+	}
+}
+
+/* Home Page Content */
+#home-content-explanation {
+	font-family: 'Source Sans Pro', sans-serif;
+	color: $text;
+	padding: 3em 0 10em 0;
+	h3 {
+		margin-top: 0;
+		font-size: 2em;
+		padding-bottom: .3em;
+	}
+	p {
+		font-size: 1.3em;
+		line-height: 1.8em;
+	}
+	.calendar, .feedback, .topics {
+		padding: 8em 0;
+	}
+	.calendar-wrapper {
+		background-color: $blue;
+		@include border-radius(2px);
+	}
+	.feedback-wrapper {
+		background-color: $green;
+		@include border-radius(2px);
+	}
+	.topics-wrapper {
+		background-color: $red;
+		@include border-radius(2px);
+	}
+	img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 150px;
+		max-height: 150px;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+	}
+}
+
+/* Call to Action Strip */
+#home-call-to-action-strip {
+	background-color: $lightGray;
+	padding: 5em 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.5em;
+	p {
+		color: $text;
+		padding-top: .5em;
+	}
+	a {
+		@include button($blue, 1px, 1em, .4s, .4s);
+		color: $white;
+		margin: 0;
+	}
 }

@@ -1,0 +1,32 @@
+<!-- Navigation Bar --> 
+	<div class="container-fluid">
+		<%= render partial: 'layouts/flash' %>
+		
+		<ul class="nav navbar-nav navbar-left">
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to	"About", about_path %></li>
+		</ul>
+
+		<div class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
+				<% if current_user %>
+					<li>
+						<%= link_to (edit_user_registration_path) do %>
+							<%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %> <%= (current_user.name || current_user.email)  %>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+					</li>
+				<% else %>
+					<li>
+						<%= link_to "Sign In", new_user_session_path %> 
+					</li>
+					<li>
+						<%= link_to "Sign Up", new_user_registration_path %>
+					</li>
+				  
+				<% end %>
+			</ul>	
+		</div>
+	</div> <!-- .container --> 
