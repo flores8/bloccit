@@ -1,30 +1,33 @@
-<h1><%= markdown @post.title %></h1>
+<div class="container">
+	<h1><%= markdown @post.title %></h1>
 
-<div class="row">
-	<div class="col-md-8">
-		<small>
-			<%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-			submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
-		</small>
-		<p><%= markdown @post.body %></p>
-		<p><%= image_tag(@post.image_url) if @post.image? %></p>
+	<div class="row">
+		<div class="col-md-8">
+			<small>
+				<%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+				submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
+			</small>
+			<p><%= markdown @post.body %></p>
+			<p><%= image_tag(@post.image_url) if @post.image? %></p>
 
-		<hr />
+			<hr />
 
-		<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+			<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
 
-		<%= render partial: 'comments', locals: { post: @post, comments: @comments } %>
+			<%= render partial: 'comments', locals: { post: @post, comments: @comments } %>
+		</div>
+
+		<div class="col-md-4">
+			<% if policy(@post).edit? %>
+				<%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+			<% end %>
+
+			<% if policy(@post).destroy? %>
+				<%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete this post?' %>
+			<% end %>
+		</div>
 	</div>
 
-	<div class="col-md-4">
-		<% if policy(@post).edit? %>
-			<%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
-		<% end %>
+		
 
-		<% if policy(@post).destroy? %>
-			<%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete this post?' %>
-		<% end %>
-	</div>
 </div>
-
-	

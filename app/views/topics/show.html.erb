@@ -1,36 +1,38 @@
-<h1><%= @topic.name %></h1>
+<div class="container">
+	<h1><%= @topic.name %></h1>
 
-<% if policy(@topic).update? %>
-	<%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
-<% end %>
+	<% if policy(@topic).update? %>
+		<%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
+	<% end %>
 
-<div class="row">
-	<div class="col-md-8">
-		<p class="lead"><%= @topic.description %></p>
-		<% @posts.each do |post| %>
-			<div class="media">
-				<div class="media-body">
-					<h4 class="media-heading">
-						<%= link_to (markdown post.title), [@topic, post] %>
-					</h4>
-					<small>
-						<%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-						submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br />
-						<%= post.comments.count %> Comments
-					</small>
+	<div class="row">
+		<div class="col-md-8">
+			<p class="lead"><%= @topic.description %></p>
+			<% @posts.each do |post| %>
+				<div class="media">
+					<div class="media-body">
+						<h4 class="media-heading">
+							<%= link_to (markdown post.title), [@topic, post] %>
+						</h4>
+						<small>
+							<%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
+							submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br />
+							<%= post.comments.count %> Comments
+						</small>
+					</div>
 				</div>
-			</div>
-		<% end %>
-		<%= will_paginate @posts %>
-	</div>
+			<% end %>
+			<%= will_paginate @posts %>
+		</div>
 
-	<div class="col-md-4">
-		<% if policy(Post.new).create? %>
-			<%= link_to "New Post", new_topic_post_path(@topic, @post), class: 'btn btn-success' %>
-		<% end %>
+		<div class="col-md-4">
+			<% if policy(Post.new).create? %>
+				<%= link_to "New Post", new_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+			<% end %>
 
-		<% if policy(@topic).destroy? %>
-			<%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', confirm: "Are you sure you want to delete this topic?" %>
-		<% end %>
+			<% if policy(@topic).destroy? %>
+				<%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', confirm: "Are you sure you want to delete this topic?" %>
+			<% end %>
+		</div>
 	</div>
 </div>

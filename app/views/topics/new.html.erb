@@ -1,24 +1,27 @@
-<h1>New Topic</h1>
-<div class="row">
-	<div class="col-md-12">
-		<%= form_for @topic do |f| %>
-			<div class="form-group">
-				<%= f.label :name %>
-				<%= f.text_field :name, class: 'form-control', placeholder: "Enter topic name" %>
-			</div>
+<div class="container">
+	<h1>New Topic</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<%= form_for @topic do |f| %>
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class: 'form-control', placeholder: "Enter topic name" %>
+				</div>
 
-			<div class="form-group">
-				<%= f.label :description %>
-				<%= f.text_area :description, class: 'form-control', placeholder: "Enter topic description" %>
-			</div>
+				<div class="form-group">
+					<%= f.label :description %>
+					<%= f.text_area :description, class: 'form-control', placeholder: "Enter topic description" %>
+				</div>
 
-			<div class="form-group">
-				<%= f.label :public, class: 'checkbox' do %>
-					<%= f.check_box :public %> Public topic
-				<% end %>
-			</div>
+				<div class="form-group">
+					<%= f.label :public, class: 'checkbox' do %>
+						<%= f.check_box :public %> Public topic
+					<% end %>
+				</div>
 
-			<%= f.submit "Save", class: 'btn btn-success' %>
-		<% end %>
+				<%= f.submit "Save", class: 'btn btn-success' %>
+			<% end %>
+		</div>
 	</div>
+
 </div>

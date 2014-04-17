@@ -66,6 +66,26 @@ $lightGray: 		#f0f0f0 !default;
 	background-position: 50% 50%;
 }
 
+@mixin font-smoothing ($value: on) {
+  @if $value == on {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+      -webkit-font-smoothing: subpixel-antialiased;
+      -moz-osx-font-smoothing: auto;
+  }
+}
+/* Usage
+	.dark-background-on-light-text {
+    @include font-smoothing(off);
+	}
+
+	.light-on-dark {
+    @include font-smoothing(on);
+	} */
+
+
 /* Site-Wide Modification
 ================================================== */
 ::-moz-selection { 
@@ -79,6 +99,28 @@ $lightGray: 		#f0f0f0 !default;
 
 .alert {
 	margin-bottom: 0;
+	padding: 1.5em 2em;
+	border: none;
+	@include border-radius(0px);
+	font-size: 1.5em;
+	font-family: 'Source Sans Pro', sans-serif;
+	@include font-smoothing(on);
+}
+.alert-success {
+	background-color: $green;
+	color: $white;
+}
+.alert-info {
+	background-color: $blue;
+	color: $white;
+}
+.alert-warning {
+	background-color: $lightGray;
+	color: $red;
+}
+.alert-danger {
+	background-color: $red;
+	color: $white;
 }
 
 /* Home Page
