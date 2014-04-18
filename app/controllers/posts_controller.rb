@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def show
     #binding.pry
     @topic = Topic.find(params[:topic_id])
+    authorize @topic
   	@post = Post.find(params[:id])
     @comments = @post.comments
     @comment = current_user.comments.build
