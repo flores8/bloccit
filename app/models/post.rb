@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 	belongs_to :topic
 	has_many :comments, dependent: :destroy
 	has_many :votes, dependent: :destroy
+	has_many :favorites, dependent: :destroy
 
 	default_scope { order('rank DESC') }
 	after_create :create_vote
