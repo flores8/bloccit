@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="media">
+				<% if @user.avatar? %>
+					<%= image_tag @user.avatar.url, class: 'pull-left' %>
+				<% end %>
+
+				<div class="media-body">
+					<h2 class="media-heading"><%= @user.name %></h2>
+					<% if current_user %>
+						<!-- Edit Account --> 
+						<%= link_to edit_user_registration_path, class: 'btn btn-primary btn-sm' do %>
+							<span class="glyphicon glyphicon-user"></span> Edit Account
+						<% end %>
+
+						<!-- Log Out --> 
+						<%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+							<span class="glyphicon glyphicon-log-out"></span> Log Out
+						<% end %>
+					<% end %>
+					<hr>
+					<small>
+						<%= pluralize(@user.posts.count, 'post') %>
+						<%= pluralize(@user.comments.count, 'comment') %>
+					</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="tabbable tabs-left">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#posts" data-toggle="tab">Posts</a>
+				</li>
+				<li>
+					<a href="#comments" data-toggle="tab">Comments</a>
+				</li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="posts">
+					<%= render @posts %>
+				</div>
+				<div class="tab-pane" id="comments">
+					Comments: 
+					<%= @user.comments.count %>
+					<% @user.comments.each do |comment| %>
+						<p><%= comment.body %></p>
+						<small>
+							<%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
+							<% if policy(comment).destroy? %>
+								| <%= link_to "Delete", comment_url_helper(comment), method: :delete %>
+							<% end %>
+						</small>
+					<% end %>
+					<%# render @user.comments %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
