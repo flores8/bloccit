@@ -27,7 +27,7 @@ describe Vote do
 		it "calls 'update_rank' on post" do
 			post = create(:post)
 			post.should_receive(:update_rank)
-			Vote.create(calue: 1 post: post)
+			Vote.create(value: 1, post: post)
 		end
 	end
 end

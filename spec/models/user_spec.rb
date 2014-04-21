@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe User do
+
 	describe ".top_rated" do
 		before :each do
 			post = nil
 			topic = create(:topic)
 			@u0 = create(:user) do |user|
-				post.user.posts.build(attributes_for(:post))
+				post = user.posts.build(attributes_for(:post))
 				post.topic = topic
 				post.save
 				c = user.comments.build(attributes_for(:comment))
@@ -31,7 +32,7 @@ describe User do
 			User.top_rated.should eq([@u1, @u0])
 		end
 		it "should have 'posts_count' on user" do 
-			user = User.top_rated
+			users = User.top_rated
 			users.first.posts_count.should eq(1)
 		end
 		it "should have 'comments_count' on user" do 
