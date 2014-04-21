@@ -25,9 +25,10 @@
 
 			<hr />
 
+			<!-- Comment on Post --> 
 			<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
 
-			<%= render partial: 'comments/comment', collection: @comments %>
+			<%= render partial: 'comments/comment' %>
 		</div>
 
 		<div class="col-md-4">
