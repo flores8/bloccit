@@ -13,6 +13,7 @@ class VotesController < ApplicationController
 	private
 
 	def setup
+		#binding.pry
 		@topic = Topic.find(params[:topic_id])
 		@post = @topic.posts.find(params[:post_id])
 
