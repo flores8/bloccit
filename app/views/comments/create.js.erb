@@ -1,5 +1,5 @@
 <% if @comment.valid? %>
-	$('.js-comments').prepend("<%= j(render(@comment)) %>");
+	$('.js-comments').empty().prepend("<%= j(render(@comment)) %>");
 	$('.new_comment').html("<%= j(render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @new_comment} ) %>");
 	$('.js-comments-count').html("<%= @post.comments.count %> Comments:");
 <% else %>
