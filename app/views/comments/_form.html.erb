@@ -1,4 +1,4 @@
-<%= form_for [topic, post, comment] do |f| %>
+<%= form_for [topic, post, comment], remote: true do |f| %>
 	<!-- Error Messages --> 
 	<% if comment.errors.any? %>
 		<div class="alert alert-danger">

@@ -28,7 +28,12 @@
 			<!-- Comment on Post --> 
 			<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
 
-			<%= render partial: 'comments/comment' %>
+			<h4 class='js-comments-count'><%= @comments.count %> Comments:</h4>
+
+			<div class="js-comments">
+				<%= render partial: 'comments/comment' %>
+			</div>
+			
 		</div>
 
 		<div class="col-md-4">
