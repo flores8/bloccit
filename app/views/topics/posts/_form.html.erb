@@ -18,6 +18,11 @@
 	  <%= f.text_field :title, class: "form-control", placeholder: "Enter post title" %>
   <% end %>
 
+  <%= form_group_tag(post.errors[:description]) do %>
+  	<%= f.label :description %>
+  	<%= f.text_area :description, class: "form-control", placeholder: "Enter description" %>
+  <% end %>
+
   <%= form_group_tag(post.errors[:body]) do %>
   	<%= f.label :body %>
 	  <%= f.text_area :body, rows: 8, class: "form-control", placeholder: "Enter post body" %>

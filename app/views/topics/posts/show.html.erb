@@ -25,6 +25,12 @@
 
 			<hr />
 
+
+
+			<%= render partial: 'other_posts' , locals: { posts: @posts }%>
+
+			<hr />
+
 			<!-- Comment on Post --> 
 			<%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
 

@@ -21,8 +21,9 @@
 					<% end %>
 					<hr>
 					<small>
-						<%= pluralize(@user.posts.count, 'post') %>
-						<%= pluralize(@user.comments.count, 'comment') %>
+						<%= pluralize(@user.posts.count, 'post') %> |
+						<%= pluralize(@user.comments.count, 'comment') %> |
+						Member for <%= time_ago_in_words(@user.confirmed_at) %> 
 					</small>
 				</div>
 			</div>
@@ -33,20 +34,30 @@
 		<div class="tabbable tabs-left">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#posts" data-toggle="tab">Posts</a>
+					<a href="#posts" data-toggle="tab">Saved Tutorials</a>
 				</li>
 				<li>
 					<a href="#comments" data-toggle="tab">Comments</a>
+				</li>
+				<li>
+					<a href="#saved" data-toggle="tab">Tutorials</a>
 				</li>
 			</ul>
 
 			<div class="tab-content">
 				<div class="tab-pane active" id="posts">
-					<%= render @posts %>
+					<% @user.favorites.each do |fav| %>
+						<p>
+							<%= link_to fav.post.title, topic_post_path(fav.post.topic_id, fav.post) %>
+						</p>
+					<% end %>
 				</div>
 				<div class="tab-pane" id="comments">
 					Comments: 
 					<%= render @comments %>
+				</div>
+				<div class="tab-pane" id="saved">
+					<%= render @posts %>
 				</div>
 			</div>
 		</div>
