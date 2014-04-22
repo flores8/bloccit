@@ -1,5 +1,6 @@
 Bloccit::Application.routes.draw do
 
+  resources :suggestions
   get "posts/index"
   devise_for :users
   resources :users, only: [:show, :index, :update]

@@ -15,6 +15,14 @@ end
 		password_confirmation: password)
 	user.skip_confirmation!
 	user.save
+
+	3.times do 
+		suggestion = Suggestion.create(
+			user: user,
+			title: Faker::Lorem.sentence,
+			body: Faker::Lorem.paragraph)
+		suggestion.update_attribute(:created_at, Time.now - rand(600..31536000))
+	end
 	
 	10.times do 
 		topic = topics.first
