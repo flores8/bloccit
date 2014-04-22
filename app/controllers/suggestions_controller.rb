@@ -1,14 +1,17 @@
 class SuggestionsController < ApplicationController
   def index
     @suggestions = Suggestion.all
+    authorize @suggestions
   end
 
   def show
     @suggestion = Suggestion.find(params[:id])
+    authorize @suggestion
   end
 
   def new
     @suggestion = Suggestion.new
+    authorize @suggestion
   end
 
   def create
