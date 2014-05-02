@@ -207,3 +207,17 @@ div.home-header {
 		margin: 0;
 	}
 }
+
+/* Footer
+================================================== */
+div.footer {
+	background-color: $green;
+	color: $white;
+	text-align: center;
+	padding: 2em 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.3em;
+	p {
+		margin-bottom: 0;
+	}
+}
