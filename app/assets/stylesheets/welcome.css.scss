@@ -123,6 +123,59 @@ $lightGray: 		#f0f0f0 !default;
 	color: $white;
 }
 
+#body {
+	font-family: 'Source Sans Pro', 'sans-serif';
+	color: $text;
+	p {
+		font-size: 1.1em;
+		line-height: 1.3em;
+	}
+}
+
+/* Navbar
+================================================== */
+nav.navbar {
+	background-color: $lightGray;
+	border: none;
+	@include border-radius(0);
+	font-family: 'Source Sans Pro', 'sans-serif';
+	@include transition (.4s);
+	li.nav a {
+		padding: 2.5em 1.5em;
+		margin: 0 .25em;
+	}
+	#top-nav {
+		li.nav.active a {
+			background-color: $blue;
+			color: $white;
+		}
+	}
+	a.navbar-brand, ul.nav a {
+		color: $text;
+		top: 0px;
+		&:hover, &:active {
+			@include transition (.4s);
+			background-color: $blue;
+			color: $white;
+		}
+	}
+	#logo {
+		background-color: $green;
+		padding: 1em;
+		@include border-radius(50%);
+		margin: 1em 2em;
+		line-height: .4em;
+		color: $white;
+		font-size: 1.5em;
+		@include transition (.4s);
+		&:hover {
+			background-color: darken($green, 10%);
+			@include transition (.4s);
+		}
+	}
+}
+
+
 /* Home Page
 ================================================== */
 
@@ -164,6 +217,27 @@ div.home-header {
 	p {
 		font-size: 1.3em;
 		line-height: 1.8em;
+	}
+	a {
+		color: $blue;
+		font-size: 1.2em;
+		line-height: 1.8em;
+		display: inline-block;
+		&:after {
+			content: '';
+			display: block;
+			height: 2px;
+			width: 0;
+			background: transparent;
+			transition: width .5s ease, background-color .5s ease;
+		}
+		&:hover:after {
+			width: 100%;
+			background: $blue;
+		}
+		&:hover {
+			text-decoration: none;
+		}
 	}
 	.calendar, .feedback, .topics {
 		padding: 8em 0;
