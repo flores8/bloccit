@@ -52,7 +52,7 @@ $lightGray: 		#f0f0f0 !default;
 	@include transition ($seconds-off);
 	&:hover {
 		text-decoration: none;
-		background-color: darken($color, 5%);
+		background-color: darken($color, 10%);
 		color: $white;
 		@include transition ($seconds-on);
 	}
@@ -129,6 +129,76 @@ $lightGray: 		#f0f0f0 !default;
 	p {
 		font-size: 1.1em;
 		line-height: 1.3em;
+	}
+}
+
+/* Forms
+================================================== */
+#form {
+	h2 {
+		color: $text;
+		font-size: 2em;
+		line-height: 1.6em;
+		text-align: center;
+		padding-top: 2em;
+		font-family: 'Source Sans Pro', sans-serif;
+		text-transform: uppercase;
+	}
+	h3 {
+		color: $text;
+		font-size: 2em;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+	i {
+		color: $text;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+	p {
+		padding: 4em 0 0;
+		color: $text;
+		font-size: 2em;
+		line-height: 1.6em;
+		text-align: center;
+	}
+	label {
+		margin-top: 2em;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 1.5em;
+		line-height: 1.4em;
+	}
+	input[type="text"], input[type="email"], input[type="password"], textarea {
+		background: $lightGray;
+		height: 50px;
+		box-shadow: none;
+		font-size: 1.3em;
+		line-height: 1.4em;
+		font-family: 'Source Sans Pro', sans-serif;
+		color: $text;
+		border: none;
+		@include border-radius (0px);
+		width: 100%;
+		margin: .5em 0;
+		padding-left: .5em;
+		@include transition (.4s);
+		&:focus {
+			border: 2px solid $blue;
+			box-shadow: none;
+			@include transition (.4s);
+		}
+	}
+	textarea {
+		height: 12em;
+		padding: 1em;
+	}
+	input[type="submit"] {
+		@include button ($blue, 1px, 1.3em, .4s, .4s);
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border: none;
+		font-family: 'Source Sans Pro', sans-serif;
+		text-transform: uppercase;
+		margin-top: 2em;
 	}
 }
 
