@@ -255,8 +255,12 @@ div.home-header {
 	padding: 10em 0;
 	.intro-text {
 		padding: 1em;
-		color: $black;
+		color: darken($text, 5%);
 		text-align: center;
+		a {
+			@include button ($green, 2px, 1.5em, .4s, .4s);
+			color: $white;
+		}
 	}
 	h1 {
 		font-family: 'Source Sans Pro', sans-serif;
